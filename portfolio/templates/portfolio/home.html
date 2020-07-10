@@ -1,0 +1,37 @@
+{% extends 'portfolio/base.html' %}
+{% load static %}
+{% block content %}
+<div class="row justify-content-center my-3">
+  <div class="col-5">
+    <img src="{% static 'portfolio/Anjali_AJ.jpg' %}" width="50%" height="50%" class="img-fluid">
+  </div>
+</div>
+
+<div class="row justify-content-center mb-3">
+  <div class="col-md-9 text-center">
+    <h3 id="hometext" class="font-weight-bold">Hello, my name is Anjali Jaiswal, I am 2020 graduate from NIT Durgapur, I have completed my engineering in Computer Science. My area of interest is backend development, I am actively looking for Backend Software Development Role.</h3>
+  </div>
+</div>
+
+<h1 style="color: #2f4729;" class="mt-5">Portfolio</h1>
+<hr>
+<div class="row">
+  {% for project in projects %}
+  <div id = "projects" class="col-lg-4 col-md-6">
+
+    {% if project.url %}
+    <a href="{{ project.url }}">
+      <img src="{{ project.image.url }}" class="img-fluid mb-2">
+    </a>
+    {% else %}
+
+    <img src="{{ project.image.url }}" class="img-fluid mb-2">
+    {% endif %}
+    <h3 style="color: #4d7543;">{{ project.title }}</h3>
+    <p>{{ project.descriptions }}</p>
+
+  </div>
+  {% endfor %}
+</div>
+
+{% endblock %}

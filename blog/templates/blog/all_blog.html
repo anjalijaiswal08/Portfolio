@@ -1,0 +1,10 @@
+{% extends 'portfolio/base.html' %}
+{% block content %}
+
+{% for k in blogs%}
+<a href='{% url 'blog:details' k.id %}'>{{k.title}}</a>
+<h5>{{k.date|date:'M D Y'}}</h5>
+<p>{{k.description|striptags|truncatechars:100}}</p>
+<img src= '{{k.image.url}}' width = '350' height= '350'>
+{% endfor %}
+{% endblock %}
